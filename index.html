@@ -1,50 +1,147 @@
-﻿<!DOCTYPE html>
-
-<!--
-     HTML code used with Epic Games HTML5 projects
-
-     much of this is for UE4 development purposes.
-
-     to create a custom HTML file for your project:
-     - make a copy of this file - or make one from scratch
-     - and put it in: "your project folder"/Build/HTML/GameX.html.template
--->
-
+<!DOCTYPE html>
 <html lang="en">
 <head>
-	<title>HTML5Pro</title>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-
-	<script src="https://code.jquery.com/jquery-2.1.3.min.js"></script>
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/js/bootstrap.min.js"></script>
-	<link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.4/css/bootstrap.min.css" rel="stylesheet">
-
-	<link href="HTML5Pro.css" rel="stylesheet">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Portfolio Website</title>
+    <style>
+        /* Set the background image for the entire page */
+        body {
+            background-image: url('assassins-creed-animus-ubisoft-abstract-animus-linii.jpg'); /* Replace with the path to your image */
+            background-size: cover;  /* Ensures the image covers the entire page */
+            background-position: center;  /* Centers the image */
+            background-repeat: repeat;  /* Prevents the image from repeating */
+            margin: 0;
+            height: 100vh;  /* Make the body take the full height of the viewport */
+        }
+    </style>
+	
 </head>
 <body>
+    
 
-<div class="wrapper" id="mainarea">
-	<div class="alert alert-warning centered-axis-xy" style="min-height: 20px; display:none;" role="alert" id="compilingmessage">
-		<div id='loadTasks'> </div>
-	</div>
-	<!-- The "tabindex=0" specifier on the canvas is important to allow it to capture keyboard focus when clicking on it with a mouse -->
-	<canvas tabindex=0 id="canvas" class="emscripten" oncontextmenu="event.preventDefault()" style="display:none;">
+
+<section class="home">
+    
+    <div class="home-img">
+        <p></p><br><br><br><br>
+        <img src="image1.png" alt="">
+    </div>
+    <div class="home-content">
+        <h1>Hi, It's <span>Animesh Choudhary</span></h1>
+        <h3 class="typing-text">I'm a Game Programmer</h3><br>
+        <p>Developing and implementing gameplay mechanics, physics simulations, AI behaviour, Network replication, procedural animations, Niagara Particle system and many other aspects of games.</p><br>
+           <p> Highly skilled in identifying and resolving performance bottlenecks and implementing optimizations for various aspects of the game such as lighting, VFX, 3D assets, and game functionality.</p><br>
+        <br>
+    <div class="home-content"><p> Softwares : Unreal Engine 5, Frostbite Engine</p>
+        <br>
+        <p>Programming Languages : C++, C#, Python, JavaScript, HTML5</p>
+        </div>
+    
+        <div class="social-icons">
+            <a href="https://www.linkedin.com/in/animesh-choudhary-48961a1ba/" target= "_blank""><i class="fa-brands fa-linkedin"></i></a>
+            <a onclick="openGmail()"<i class="fa-brands fa-google"></i></a>
+            
+        </div>
+            <script>
+        function openGmail() {
+            const email = "animesh2900@gmail.com";  // Replace with your Gmail address
+            const subject = "Subject%20Here";  // Replace with your subject
+            const body = "Body%20of%20the%20email";  // Replace with the body content
+            
+            // Construct the Gmail compose URL
+            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+
+            // Open Gmail compose window
+            window.open(gmailUrl, '_blank');
+        }
+    </script>
+
+
+</section>
+
+<section class="home">
+<div class="video">
+<iframe width="900" height="377" position=0
+        src="https://www.youtube.com/embed/DxXYP3uCSgs" allowfullscreen=True>
+</iframe>
 </div>
-<div hidden class="row buttonarea text-center" id="buttonrow">
-	<div class="col-sm-2 text-center"></div>
-	<div class="col-sm-2 text-center"><button type="button" class="btn btn-primary" onclick="try { Module['pauseMainLoop'](); } catch(e) {console.error(e);}">Pause</button></div>
-	<div class="col-sm-2 text-center"><button type="button" class="btn btn-primary" onclick="try { Module['resumeMainLoop'](); } catch(e) {console.error(e);}">Resume</button></div>
-	<div class="col-sm-2 text-center"><button type="button" class="btn btn-primary" onclick="var w = document.getElementById('logwindow'); w.style.display = w.style.display ? '' : 'none';">Toggle Log</button></div>
-	<div class="col-sm-2 text-center"><button type="button" class="btn btn-primary" id='clear_indexeddb' onclick="try { deleteIndexedDBStorage(); } catch(e) {console.error(e);}">Clear IndexedDB</button></div>
-	<div class="col-sm-2 text-center"><button type="button" class="btn btn-primary" id="fullscreen_request">FullScreen</button></div>
-	<div class="col-sm-2 text-center"></div>
-	<div class="col-sm-2 text-center"></div>
+<div class="home-content">
+        <h1>Codename <span>Kaiten</span></h1>
+        <h3 class="typing-text">Solo Indie Game</h3>
+        <p>A physics simulated PvP fighting game</p>
+	<p>Developed this game from scratch in Unreal Engine 5.</p>
+        </div>
 
+</section>
 
+<section class="home">
+<div class="video">
+<iframe width="900" height="377" position=500
+        src="https://www.youtube.com/embed/mIc0gLrc8x0"></iframe>
+       </div>
+<div class="home-content">
+        <h1>Life In Water <span>VR</span></h1>
+        <h3 class="typing-text">Worked as a Game Programmer</h3>
+        <p>Developed gameplay mechanics and experince in VR using Unreal Engine 5.</p>
+        </div>
+</section>
+
+<section class="home">
+<div class="video">
+<iframe width="900" height="377" position=500
+        src="https://www.youtube.com/embed/Owbr5jylD1k"></iframe>
+ </div>
+<div class="home-content">
+        <h1>Chandrayaan <span>VR</span></h1>
+        <h3 class="typing-text">Worked as a Game Programmer</h3>
+        <p>Developed gameplay mechanics and optimised the game for Standalone Oculus Quest 2 in Unreal Engine 5.</p>
+        </div>
+</section>
+
+<section class="home">
+<div class="video">
+<iframe width="900" height="377" position=500
+        src="https://www.youtube.com/embed/t_bCN95pxSc"></iframe>
+ </div>
+<div class="home-content">
+        <h1>Inside Human Body <span>VR</span></h1>
+        <h3 class="typing-text">Worked as a Game Programmer</h3>
+        <p>Optimised for standalone Oculus Quest 2</p>
+	<p>Cinematic Programmer</p>
+
+        </div>
+</section>
+<section class="home">
+    <div class="home-content"><h1>Work Experience</h1>
+    <br><br><br><br><br><br><br><br><br>
+    <h3><span>Technicolor Games</span>, Bangalore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<date>March 2024 - Present</date></h3>
+    <h2>Technical Artist</h2><br><br><br>
+    <p>- Technical Support for AAA titles such as EA FC25, Dragon Age: Veilguard and GTA 6, ensuring a smooth workflow of the pipelines for 3D assets from Maya and Motionbuilder.</p><br>
+    <p>- Internal website integration with Autodesk Shotgun for the production team.</p><br>
+    <p>- Implementing network replication/synchronisation and multiplayer support for a prototype Third-person shooter project in Unreal Engine 5.</p><br>
+    <p>- Developing Maya tools for modelling, animation and texturing teams using python/mel.</p><br>
+    <p>- Developed pipeline automation tools with python scripting.</p><br>
+<br><br><br>
+<h3> <span>Sunovatech</span>, New Delhi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<date>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;December 2022 - February 2024</date></h3>
+<h2>Game Programmer</h2><br><br><br>
+<p>- Created Dolphin Dive, an endless runner game, part of the title Life in Water VR.</p><br>
+    <p>- Implemented an autonomous pathfinding system for AI NPC, involving 3D vector maths in Unreal Engine 5.</p><br>
+    <p>- Developed and debugged interactivities for VR experiences and optimized shaders and environment lighting for low-latency VR experiences.</p><br>
+    <p>- Developed custom anti-cheat solutions for the titles.</p><br>
+    <p>- Responsibilities involved training and mentoring interns.</p><br>
+    <p>- Implemented physics-based vehicle gameplay mechanics for the title Chandrayaan VR.</p><br>
+    <p>- Contributed majorly to Life In Water VR, The Forestias VR, Chandrayaan VR and Inside Human Body VR.</p><br><br><br><br><br><br>
+    
 </div>
-<div class="texthalf text-normal jumbotron " id="logwindow" style='display:none'></div>
-
-<script src="HTML5Pro.UE4.js"></script>
+    
+</section>
 </body>
 </html>
+
+
+    
+</head>
+<body>
