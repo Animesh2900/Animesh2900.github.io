@@ -1,170 +1,183 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="style.css">
-    <title>Animesh Choudhary</title>
-    <style>
-        /* Set the background image for the entire page */
-        
-    </style>
-	
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Animesh Choudhary</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+
+<style>
+body {
+    margin: 0;
+    font-family: 'Inter', sans-serif;
+    background: #0a0a0a;
+    color: white;
+}
+
+section {
+    padding: 100px 15%;
+}
+
+h1 {
+    font-size: 48px;
+    font-weight: 600;
+}
+
+h2 {
+    font-size: 28px;
+    margin-bottom: 20px;
+}
+
+p {
+    color: #aaa;
+    line-height: 1.6;
+}
+
+.hero {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.project {
+    margin-bottom: 120px;
+}
+
+.video iframe {
+    width: 100%;
+    height: 400px;
+    border-radius: 12px;
+}
+
+ul {
+    margin-top: 20px;
+    color: #ccc;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+.small {
+    color: #888;
+    font-size: 14px;
+}
+</style>
 </head>
+
 <body>
-    
 
+<!-- HERO -->
+<section class="hero">
+    <h1>Animesh Choudhary</h1>
 
-<section class="home">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-    <div class="home-img">
-        <p></p><br><br><br><br><br><br><br><br>
-        <img src="image2.png" alt="">
-    </div>
-    <div class="home-content">
-        <br><br><br><br><br><br>
-        <h1>Hello there! It's Animesh Choudhary</h1><br><br>
-        <h1></h1>
-        <h3>A Game Developer with expertise in implementing and tuning realistic physics systems for dynamic and immersive gameplay</h3><br>
-        <p>Developing and implementing gameplay mechanics, physics simulations, AI behaviour, replication on network, procedural animations, Niagara particle system and many other aspects of games.</p><br>
-        <p> Highly skilled in identifying and resolving performance bottlenecks and implementing optimizations for various aspects of the game such as lighting, VFX, 3D assets, and game functionality.</p><br>
-        <br>
-    <div class="home-content"><p> Softwares : Unreal Engine 5, Maya</p>
-        <br>
-        <p>Programming Languages : C++, C#, Python, JavaScript, HTML5</p>
-        </div>
-    
-        <div class="social-icons">
-            <a href="https://www.linkedin.com/in/animesh-choudhary-48961a1ba/" target= "_blank"><i class="fa-brands fa-linkedin"></i></a>
-            <a onclick="openGmail()"><i class="fa-brands fa-google"></i></a>
-        </div>
-	<div class="home-content"><p>animesh2900@gmail.com</p>
-		</div>
-            <script>
-        function openGmail() {
-            const email = "animesh2900@gmail.com";  // Replace with your Gmail address
-            const subject = "Subject%20Here";  // Replace with your subject
-            const body = "Body%20of%20the%20email";  // Replace with the body content
-            
-            // Construct the Gmail compose URL
-            const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${email}&su=${subject}&body=${body}`;
+    <h2>Gameplay Programmer / Technical Animator</h2>
 
-            // Open Gmail compose window
-            window.open(gmailUrl, '_blank');
-        }
-    </script>
+    <p>
+        Specializing in physics-driven gameplay systems, multiplayer networking, 
+        and real-time animation pipelines in Unreal Engine.
+    </p>
 
-</div>
-</section>
-<section class="home"><div class="home-content"><h1>Projects</h1></div></section>
-
-<section class="home">
-<div class="video">
-<iframe width="720" height="301.6" 
-        src="https://www.youtube.com/embed/DxXYP3uCSgs" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=True>
-</iframe>
-</div>
-<div class="home-content">
-        <h1>Codename Kaiten</h1>
-        <h3>Solo Indie Game</h3>
-        <p>A PvP multiplayer game developed in Unreal Engine 5, showcasing dynamic and realistic spinning top combat through advanced physics simulations.</p>
-        </div>
-
+    <p class="small">
+        Ubisoft • Technicolor • VR • Multiplayer • Physics Systems
+    </p>
 </section>
 
-<section class="home">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-        <div class="home-content">
-            <p>- Implemented the core physics simulation with UE blueprints, calculating and applying the linear & angular dynamic forces for stabilization and control over the physics simulated mesh which involved 3D vector math and principles of rotational dynamics.</p><br>
-        <br><p>- Designed SFX with metasound and realtime VFX with the Niagara System and visual scripting to make them dynamically responsive to every collision.</p>
-        <br><p>- The opponent AI behaviour was implemented in blueprints with varying aggressive/defensive strategies dynamically responding to the player's movement.</p>
-        <br><p>- Implemented support for local split screen multiplayer.</p>
-        <br><p>- Currently working on support for online multiplayer and match matching via Epic Online Services.</p><br><br><br><br><br><br></div>
-        
-    </div>
-</section>
+<!-- PROJECT 1 -->
+<section class="project">
+    <h2>Codename Kaiten</h2>
 
-<section class="home">
-<div class="video">
-<iframe width="720" height="301.6" 
-        src="https://www.youtube.com/embed/mIc0gLrc8x0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=True></iframe>
-       </div>
-<div class="home-content">
-        <h1>Life In Water VR</h1>
-        <h3>Sunovatech : Game Programmer</h3>
-        <p>Developed gameplay mechanics and experince in VR using Unreal Engine 5.</p>
-        </div>
-</section>
-
-<section class="home">
-<div class="video">
-<iframe width="720" height="301.6" 
-        src="https://www.youtube.com/embed/Owbr5jylD1k" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=True></iframe>
- </div>
-<div class="home-content">
-        <h1>Chandrayaan VR</h1>
-        <h3>Sunovatech : Game Programmer</h3>
-        <p>Developed gameplay mechanics and optimised the game for Standalone Oculus Quest 2 in Unreal Engine 5.</p>
-        </div>
-</section>
-
-<section class="home">
     <div class="video">
-    <iframe width="720" height="301.6" 
-            src="https://www.youtube.com/embed/t_bCN95pxSc" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen=True></iframe>
-     </div>
-    <div class="home-content">
-            <h1>Inside Human Body VR</h1>
-            <h3>Sunovatech : Game Programmer</h3>
-            <p>Optimised for standalone Oculus Quest 2</p>
-            </div>
-    </section>
-
-<section class="home">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-    <div class="home-content"><h1>Work Experience</h1>
-    <br><br><br><br><br><br><br><br><br>
-    <h3>Technicolor Games, Bangalore&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<date>March 2024 - Present</date></h3>
-    <h2>Technical Artist</h2><br><br><br>
-    <p>- Innovated gameplay mechanics for a prototype First-Person Shooter game in Unreal Engine 5, using visual scripting and Animation blueprints with control rig for procedural animations.</p><br>
-    <p>- Enabled support for multiplayer by implementing Server-Client model for network replication/synchronisation for a consistent and server authoritative network gameplay.</p><br>
-    <p>- Automated data synchronization between Shotgun and the internal website, ensuring real-time updates and maintaining data consistency across platforms.</p><br>
-    <p>- Provided Technical Support for AAA video game titles such as EA FC 25, Dragon Age : Veilguard and GTA 6, ensuring a smooth workflow of production pipelines and improving data accessibility.</p><br>
-    <p>- Developing Maya tools for modelling, animation and texturing teams using python/mel.</p><br>
-    <p>- Deployed a range of automation tools to streamline various stages of the game development pipeline, reducing manual effort and minimizing human error.</p><br>
-    <p>- Integrated pipelines with various production tools and software, such as Maya, MotionBuilder etc. and version control systems, to create a seamless workflow and environment.</p>
-<br><br><br>
-<h3>Sunovatech, New Delhi&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<date>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;December 2022 - February 2024</date></h3>
-<h2>Game Programmer</h2><br><br><br>
-<p>- Developed Dolphin Dive, an engaging endless runner game as a core component of the Life in Water VR experience.</p><br>
-    <p>- Developed an autonomous pathfinding system for AI NPCs in Unreal Engine 5, utilizing advanced 3D vector mathematics for intelligent navigation..</p><br>
-    <p>- Debugged interactivities for VR experiences and optimized shaders and environment lighting for low-latency VR experiences.</p><br>
-    <p>- Designed and implemented custom anti-cheat measures to combat cheating and ensure fair gameplay across all titles.</p><br>
-    <p>- Implemented realistic physics-based vehicle gameplay mechanics for the Chandrayaan VR.</p><br>
-    <p>- Made significant contributions to the development of Life In Water VR, The Forestias VR, Chandrayaan VR, and Inside Human Body VR.</p><br>
-    <p>- Provided technical guidance and mentorship to junior developers, including interns.</p><br><br><br><br><br><br>
-    
-</div>
-</div>
-</section>
-<section class="home">
-    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 10px;">
-        <div class="home-content"><h1>Skills</h1><br><br><br><br><br><br><br><br><br>
-            <p>- Unreal Engine Development for PC/VR/Android/HTML5 platforms.</p><br>
-        <br><p>- Knowledge of pipelines for 3D assets, texture and animations from DCC like Maya, Photoshop, Motionbuilder and debugging skills, ability to fix and troubleshoot workflow issues in artist software, version control systems, and rendering issues within game engines.</p>
-        <br><p>- Strong experience in identifying and resolving performance bottlenecks and implementing optimizations for various aspects of the game such as Game mechanics, AI behaviour, physics simulations, lighting, SFX with meta sounds, VFX with the Niagara Particle system, Network Replication and more.</p>
-        <br><p>- Experience in implementing procedural animation with the control rig in Unreal Engine 5.</p>
-        <br><p>- Familiar with version control systems like Perforce/SVN/Git.</p><br><br><br><br><br><br></div>
-        
+        <iframe src="https://www.youtube.com/embed/DxXYP3uCSgs"></iframe>
     </div>
+
+    <ul>
+        <li>Developed a PvP multiplayer spinning-top combat game in Unreal Engine 5</li>
+        <li>Built physics-driven gameplay systems using 3D vector math and rotational dynamics</li>
+        <li>Implemented AI with adaptive aggressive/defensive behaviors</li>
+        <li>Designed dynamic VFX (Niagara) and SFX (MetaSounds)</li>
+        <li>Implemented split-screen multiplayer and working on online multiplayer (EOS)</li>
+    </ul>
 </section>
-    
+
+<!-- PROJECT 2 -->
+<section class="project">
+    <h2>Life in Water VR</h2>
+
+    <div class="video">
+        <iframe src="https://www.youtube.com/embed/mIc0gLrc8x0"></iframe>
+    </div>
+
+    <ul>
+        <li>Implemented boid-based simulation using Niagara for large-scale fish behavior</li>
+        <li>Developed VAT animation pipelines with shader-based blending</li>
+        <li>Optimized VR performance to maintain stable 60 FPS on mobile VR</li>
+        <li>Designed and developed Dolphin Dive gameplay systems</li>
+    </ul>
+</section>
+
+<!-- PROJECT 3 -->
+<section class="project">
+    <h2>Chandrayaan VR</h2>
+
+    <div class="video">
+        <iframe src="https://www.youtube.com/embed/Owbr5jylD1k"></iframe>
+    </div>
+
+    <ul>
+        <li>Implemented physics-based vehicle gameplay systems</li>
+        <li>Optimized for standalone VR performance (Quest 2)</li>
+    </ul>
+</section>
+
+<!-- EXPERIENCE -->
+<section>
+    <h2>Experience</h2>
+
+    <h3>Ubisoft — Technical Animator</h3>
+    <p class="small">2025 - Present</p>
+
+    <ul>
+        <li>Worked on Assassin’s Creed Black Flag Resynced and an unannounced AAA title</li>
+        <li>Integrated cinematic and gameplay animation systems in-engine</li>
+        <li>Built modular rigging systems (3ds Max, MotionBuilder, Anvil)</li>
+        <li>Handled full mocap pipeline (capture → retarget → engine)</li>
+    </ul>
+
+    <br>
+
+    <h3>Technicolor — Technical Artist</h3>
+    <p class="small">2024 - 2025</p>
+
+    <ul>
+        <li>Built multiplayer FPS prototype in Unreal Engine</li>
+        <li>Implemented server-authoritative networking</li>
+        <li>Developed pipeline tools (Python/MEL)</li>
+        <li>Debugged AAA pipelines across EA FC, Dragon Age, GTA VI</li>
+    </ul>
+
+    <br>
+
+    <h3>Sunovatech — Game Programmer</h3>
+    <p class="small">2022 - 2024</p>
+
+    <ul>
+        <li>Developed VR gameplay systems across multiple titles</li>
+        <li>Built AI pathfinding and physics systems</li>
+        <li>Optimized VR experiences for performance and latency</li>
+    </ul>
+</section>
+
+<!-- SKILLS -->
+<section>
+    <h2>Skills</h2>
+
+    <p>
+        Unreal Engine 5 • C++ • Blueprints • Python • MEL • Niagara • MetaSounds • Control Rig • MotionBuilder • Maya • 3ds Max
+    </p>
+</section>
 
 </body>
 </html>
-
-
-    
-</head>
-<body>
