@@ -25,8 +25,8 @@ renderer.toneMappingExposure = 1.5;
 const renderScene = new RenderPass(scene, camera);
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
-    2,   // Strength
-    0.4,   // Radius
+    1,   // Strength
+    0.1,   // Radius
     0.15   // Threshold
 );
 const composer = new EffectComposer(renderer);
@@ -45,7 +45,7 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.7));
 
 // ── Tweak these ────────────────────────────────────────────────────────────────
 const SLERP_FACTOR = 0.05;  // 0–1. Lower = floatier. Higher = snappier.
-const SPEED_SCALE = 1.5;   // Orbit speed multiplier.
+const SPEED_SCALE = 2.5;   // Orbit speed multiplier.
 const MAX_ANGLE_PER_FRAME = 0.04;  // Hard cap on rotation per frame (radians).
 const DEAD_ZONE = 0.04;  // Min cursor NDC distance from centre before orbit starts.
 // ───────────────────────────────────────────────────────────────────────────────
@@ -118,7 +118,7 @@ function animate() {
 
     const dist = mouse.length();
     if (dist > DEAD_ZONE) {
-        rawAxis.set(-mouse.y, mouse.x, 0);
+        rawAxis.set(0, mouse.x, 0);
         normalizedAxis.copy(rawAxis).normalize();
 
         const angle = Math.min(dist * SPEED_SCALE * delta, MAX_ANGLE_PER_FRAME);
