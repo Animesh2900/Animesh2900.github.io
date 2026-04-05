@@ -1,4 +1,4 @@
-﻿import * as THREE from 'https://unpkg.com/three@0.152.2/build/three.module.js';
+import * as THREE from 'https://unpkg.com/three@0.152.2/build/three.module.js';
 import { GLTFLoader } from 'https://unpkg.com/three@0.152.2/examples/jsm/loaders/GLTFLoader.js';
 import { EffectComposer } from 'https://unpkg.com/three@0.152.2/examples/jsm/postprocessing/EffectComposer.js';
 import { RenderPass } from 'https://unpkg.com/three@0.152.2/examples/jsm/postprocessing/RenderPass.js';
@@ -12,7 +12,7 @@ const canvas = document.querySelector('#webgl');
 const scene = new THREE.Scene();
 
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 0, 40);
+camera.position.set(0, 10, 40);
 scene.add(camera);
 
 const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
@@ -25,7 +25,7 @@ renderer.toneMappingExposure = 1.5;
 const renderScene = new RenderPass(scene, camera);
 const bloomPass = new UnrealBloomPass(
     new THREE.Vector2(window.innerWidth, window.innerHeight),
-    1.5,   // Strength
+    2,   // Strength
     0.4,   // Radius
     0.15   // Threshold
 );
@@ -34,7 +34,7 @@ composer.addPass(renderScene);
 composer.addPass(bloomPass);
 
 // Lights
-const light = new THREE.PointLight(0xffffff, 2);
+const light = new THREE.PointLight(0xffffff, 0);
 light.position.set(5, 5, 5);
 scene.add(light);
 scene.add(new THREE.AmbientLight(0xffffff, 0.7));
@@ -45,8 +45,8 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.7));
 
 // ── Tweak these ────────────────────────────────────────────────────────────────
 const SLERP_FACTOR = 0.05;  // 0–1. Lower = floatier. Higher = snappier.
-const SPEED_SCALE = 155;   // Orbit speed multiplier.
-const MAX_ANGLE_PER_FRAME = 0.06;  // Hard cap on rotation per frame (radians).
+const SPEED_SCALE = 1.5;   // Orbit speed multiplier.
+const MAX_ANGLE_PER_FRAME = 0.04;  // Hard cap on rotation per frame (radians).
 const DEAD_ZONE = 0.04;  // Min cursor NDC distance from centre before orbit starts.
 // ───────────────────────────────────────────────────────────────────────────────
 
@@ -74,10 +74,10 @@ loader.load(
     'animation.glb',
     (gltf) => {
         const model = gltf.scene;
-        model.scale.set(23 , 23, 23);
+        model.scale.set(30 , 30 ,30 );
         model.traverse((child) => {
             if (child.isMesh && child.material.emissive) {
-                child.material.emissiveIntensity = 10;
+                child.material.emissiveIntensity = 1;
             }
         });
         scene.add(model);
