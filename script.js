@@ -45,8 +45,8 @@ scene.add(new THREE.AmbientLight(0xffffff, 0.7));
 
 // ── Tweak these ────────────────────────────────────────────────────────────────
 const SLERP_FACTOR = 0.05;  // 0–1. Lower = floatier. Higher = snappier.
-const SPEED_SCALE = 1.5;   // Orbit speed multiplier.
-const MAX_ANGLE_PER_FRAME = 0.04;  // Hard cap on rotation per frame (radians).
+const SPEED_SCALE = 155;   // Orbit speed multiplier.
+const MAX_ANGLE_PER_FRAME = 0.06;  // Hard cap on rotation per frame (radians).
 const DEAD_ZONE = 0.04;  // Min cursor NDC distance from centre before orbit starts.
 // ───────────────────────────────────────────────────────────────────────────────
 
