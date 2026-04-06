@@ -1,148 +1,117 @@
-import * as THREE from 'https://unpkg.com/three@0.152.2/build/three.module.js';
-import { GLTFLoader } from 'https://unpkg.com/three@0.152.2/examples/jsm/loaders/GLTFLoader.js';
-import { EffectComposer } from 'https://unpkg.com/three@0.152.2/examples/jsm/postprocessing/EffectComposer.js';
-import { RenderPass } from 'https://unpkg.com/three@0.152.2/examples/jsm/postprocessing/RenderPass.js';
-import { UnrealBloomPass } from 'https://unpkg.com/three@0.152.2/examples/jsm/postprocessing/UnrealBloomPass.js';
+/* ═══════════════════════════════════════════
+   CUSTOM CURSOR
+════════════════════════════════════════════ */
+const cursor    = document.getElementById('cursor');
+const cursorDot = document.getElementById('cursorDot');
 
-const canvas = document.querySelector('#webgl');
-
-// ==============================
-// 🎨 SCENE & CAMERA SETUP
-// ==============================
-const scene = new THREE.Scene();
-
-const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
-camera.position.set(0, 10, 40);
-scene.add(camera);
-
-const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
-renderer.setSize(window.innerWidth, window.innerHeight);
-renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-renderer.toneMapping = THREE.ReinhardToneMapping;
-renderer.toneMappingExposure = 1.5;
-
-// ——— BLOOM ———
-const renderScene = new RenderPass(scene, camera);
-const bloomPass = new UnrealBloomPass(
-    new THREE.Vector2(window.innerWidth, window.innerHeight),
-    1,   // Strength
-    0.1,   // Radius
-    0.15   // Threshold
-);
-const composer = new EffectComposer(renderer);
-composer.addPass(renderScene);
-composer.addPass(bloomPass);
-
-// Lights
-const light = new THREE.PointLight(0xffffff, 0);
-light.position.set(5, 5, 5);
-scene.add(light);
-scene.add(new THREE.AmbientLight(0xffffff, 0.7));
-
-// ==============================
-// 🎮 ORBIT PHYSICS — QUATERNION
-// ==============================
-
-// ── Tweak these ────────────────────────────────────────────────────────────────
-const SLERP_FACTOR = 0.05;  // 0–1. Lower = floatier. Higher = snappier.
-const SPEED_SCALE = 2.5;   // Orbit speed multiplier.
-const MAX_ANGLE_PER_FRAME = 0.04;  // Hard cap on rotation per frame (radians).
-const DEAD_ZONE = 0.04;  // Min cursor NDC distance from centre before orbit starts.
-// ───────────────────────────────────────────────────────────────────────────────
-
-const mouse = new THREE.Vector2(0, 0);
+let mouseX = 0, mouseY = 0;
+let curX   = 0, curY   = 0;
 
 window.addEventListener('mousemove', (e) => {
-    mouse.x = (e.clientX / window.innerWidth) * 2 - 1;
-    mouse.y = -(e.clientY / window.innerHeight) * 2 + 1;
+    mouseX = e.clientX;
+    mouseY = e.clientY;
+    cursorDot.style.left = mouseX + 'px';
+    cursorDot.style.top  = mouseY + 'px';
 });
 
-// ── Quaternion state ──────────────────────────────────────────────────────────
-const orbitQuat = new THREE.Quaternion();
-const targetDeltaQuat = new THREE.Quaternion();
-const slerpedQuat = new THREE.Quaternion();
-const cameraOffset = camera.position.clone(); // (0, 0, 40)
+function animateCursor() {
+    curX += (mouseX - curX) * 0.12;
+    curY += (mouseY - curY) * 0.12;
+    cursor.style.left = curX + 'px';
+    cursor.style.top  = curY + 'px';
+    requestAnimationFrame(animateCursor);
+}
+animateCursor();
 
-const rawAxis = new THREE.Vector3();
-const normalizedAxis = new THREE.Vector3();
-
-// ==============================
-// 🎬 LOAD GLTF + EMISSIVE BOOST
-// ==============================
-const loader = new GLTFLoader();
-loader.load(
-    'animation.glb',
-    (gltf) => {
-        const model = gltf.scene;
-        model.scale.set(30 , 30 ,30 );
-        model.traverse((child) => {
-            if (child.isMesh && child.material.emissive) {
-                child.material.emissiveIntensity = 1;
-            }
-        });
-        scene.add(model);
-    },
-    undefined,
-    (err) => console.error('GLB load error:', err)
-);
-
-// ==============================
-// 🔍 SCROLL-TO-ZOOM
-// ==============================
-
-// ── Tweak these ────────────────────────────────────────────────────────────────
-const ZOOM_MIN = 20;   // closest  (scroll = page bottom)
-const ZOOM_MAX = 40;   // furthest (scroll = page top)
-const PAGE_HEIGHT_VH = 500;  // total page height in vh units
-// ───────────────────────────────────────────────────────────────────────────────
-
-document.body.style.height = `${PAGE_HEIGHT_VH}vh`;
+/* ═══════════════════════════════════════════
+   NAV
+════════════════════════════════════════════ */
+const nav       = document.getElementById('nav');
+const navToggle = document.getElementById('navToggle');
+const navLinks  = document.getElementById('navLinks');
 
 window.addEventListener('scroll', () => {
-    // maxScroll is the exact number of pixels the user CAN scroll —
-    // always precise, no ScrollTrigger rounding or lag
-    const maxScroll = document.body.scrollHeight - window.innerHeight;
-    const progress = Math.min(window.scrollY / maxScroll, 1.0); // 0 at top, 1 at bottom
-    const targetDist = ZOOM_MAX - progress * (ZOOM_MAX - ZOOM_MIN);
-    cameraOffset.setLength(targetDist);
+    nav.classList.toggle('scrolled', window.scrollY > 40);
 });
 
-// ==============================
-// ⏱️ ANIMATION LOOP
-// ==============================
-const clock = new THREE.Clock();
+navToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+});
 
-function animate() {
-    requestAnimationFrame(animate);
-    const delta = Math.min(clock.getDelta(), 0.05);
+navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => navLinks.classList.remove('open'));
+});
 
-    const dist = mouse.length();
-    if (dist > DEAD_ZONE) {
-        rawAxis.set(0, mouse.x, 0);
-        normalizedAxis.copy(rawAxis).normalize();
+/* ═══════════════════════════════════════════
+   SCROLL REVEAL
+════════════════════════════════════════════ */
+const revealObserver = new IntersectionObserver((entries) => {
+    entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+            const siblings = entry.target.parentElement.querySelectorAll(
+                '.timeline-item, .skill-card, .portfolio-item'
+            );
+            const idx = [...siblings].indexOf(entry.target);
+            entry.target.style.transitionDelay = `${idx * 0.08}s`;
+            entry.target.classList.add('visible');
+            revealObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.12 });
 
-        const angle = Math.min(dist * SPEED_SCALE * delta, MAX_ANGLE_PER_FRAME);
-        targetDeltaQuat.setFromAxisAngle(normalizedAxis, angle);
+document.querySelectorAll('.timeline-item, .skill-card, .portfolio-item')
+    .forEach(el => revealObserver.observe(el));
 
-        slerpedQuat.identity().slerp(targetDeltaQuat, SLERP_FACTOR);
-        orbitQuat.premultiply(slerpedQuat);
-        orbitQuat.normalize();
+/* ═══════════════════════════════════════════
+   COUNTER ANIMATION
+════════════════════════════════════════════ */
+function animateCount(el, target, duration = 1800) {
+    let start = null;
+    function step(ts) {
+        if (!start) start = ts;
+        const progress = Math.min((ts - start) / duration, 1);
+        const eased    = 1 - Math.pow(1 - progress, 3);
+        el.textContent = Math.floor(eased * target);
+        if (progress < 1) requestAnimationFrame(step);
+        else el.textContent = target;
     }
-
-    camera.position.copy(cameraOffset).applyQuaternion(orbitQuat);
-    camera.lookAt(0, 0, 0);
-
-    composer.render();
+    requestAnimationFrame(step);
 }
 
-animate();
+const counterObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            animateCount(entry.target, parseInt(entry.target.dataset.count, 10));
+            counterObserver.unobserve(entry.target);
+        }
+    });
+}, { threshold: 0.5 });
 
-// ==============================
-// 📐 WINDOW RESIZE
-// ==============================
-window.addEventListener('resize', () => {
-    camera.aspect = window.innerWidth / window.innerHeight;
-    camera.updateProjectionMatrix();
-    renderer.setSize(window.innerWidth, window.innerHeight);
-    composer.setSize(window.innerWidth, window.innerHeight);
+document.querySelectorAll('[data-count]').forEach(el => counterObserver.observe(el));
+
+/* ═══════════════════════════════════════════
+   HERO VIDEO PARALLAX
+════════════════════════════════════════════ */
+const heroBg = document.getElementById('heroBg');
+window.addEventListener('scroll', () => {
+    if (!heroBg) return;
+    heroBg.style.transform = `translateY(${window.scrollY * 0.4}px)`;
 });
+
+/* ═══════════════════════════════════════════
+   ACTIVE NAV ON SCROLL
+════════════════════════════════════════════ */
+const sections   = document.querySelectorAll('section[id]');
+const navAnchors = document.querySelectorAll('.nav-links a');
+
+const sectionObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            navAnchors.forEach(a => a.classList.remove('active'));
+            const active = document.querySelector(`.nav-links a[href="#${entry.target.id}"]`);
+            if (active) active.classList.add('active');
+        }
+    });
+}, { threshold: 0.4 });
+
+sections.forEach(s => sectionObserver.observe(s));
