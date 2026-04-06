@@ -185,7 +185,7 @@ body:has(button:hover) .cursor {
 }
 .hero-eyebrow {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 1rem;
     letter-spacing: 0.25em;
     text-transform: uppercase;
     color: var(--accent);
@@ -209,7 +209,7 @@ body:has(button:hover) .cursor {
     }
 .hero-sub {
     font-family: var(--font-mono);
-    font-size: 0.8rem;
+    font-size: 2rem;
     color: var(--text-muted);
     letter-spacing: 0.1em;
     margin-top: 1.5rem;
@@ -336,7 +336,7 @@ body:has(button:hover) .cursor {
 }
 .body-text {
     color: var(--text-muted);
-    font-size: 1rem;
+    font-size: 1.2rem;
     line-height: 1.8;
     margin-bottom: 1.25rem;
     font-weight: 300;
@@ -350,7 +350,7 @@ body:has(button:hover) .cursor {
 }
 .about-tags span {
     font-family: var(--font-mono);
-    font-size: 0.7rem;
+    font-size: 1rem;
     letter-spacing: 0.08em;
     padding: 0.4rem 0.9rem;
     border: 1px solid var(--border);
